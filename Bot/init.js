@@ -12,6 +12,8 @@ const prefix=process.env.PREFIX;
 client.commands=new Discord.Collection();
 const commandFiles=fs.readdirSync("./Bot/commands").filter(file=>file.endsWith(".js"));
 
+require
+
 for(const file of commandFiles){
     const command=require(`./commands/${file}`);
     client.commands.set(command.name,command);

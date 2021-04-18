@@ -1,0 +1,8 @@
+name
+description
+permissions
+aliases
+cooldown
+args
+guildOnly
+usage
