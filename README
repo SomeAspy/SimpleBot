@@ -1,0 +1,5 @@
+This bot uses .env to read tokens and prefix.
+
+to setup:
+1. make a file named .env
+2. todo #1
