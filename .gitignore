@@ -1,5 +1,2 @@
 # DotEnv should be ignored for security/obvious reasons
-*.env
-
-# Be more specific just in case
-Token.env
+.env
