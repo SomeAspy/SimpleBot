@@ -1,6 +1,6 @@
 
 const Discord=require("discord.js")
-const lib=require("../../helper")
+require('../../helper')
 
 module.exports={
     name:"serverinfo",
@@ -9,7 +9,7 @@ module.exports={
     aliases:["server"],
     execute(message,args){
         const embed=new Discord.MessageEmbed()
-        .setColor(lib.RandColor())
+        .setColor(RandColor())
         .setTitle(`${message.guild.name}'s stats`)
         .setImage(message.guild.iconURL())
         .addFields(
