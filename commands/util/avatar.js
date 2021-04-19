@@ -8,9 +8,9 @@ module.exports={
     cooldown:5,
     execute(message,args){
         let user;
-        if(!message.mentions.users.size){
+        //if(!message.mentions.users.size){
             user=message.author.displayAvatarURL({dynamic:true})
-        }
+        //}
         const embed=new Discord.MessageEmbed()
         .setColor(lib.RandColor)
         .setImage(user)
