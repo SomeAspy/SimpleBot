@@ -1,4 +1,5 @@
-const RandColor=()=>{return Math.floor(Math.random()*16777215).toString(16);}
-//export function getID()
+module.exports={
+    randColor:function(){return Math.floor(Math.random()*16777215).toString(16);},
+    
 
-exports.RandColor=RandColor()
+}
