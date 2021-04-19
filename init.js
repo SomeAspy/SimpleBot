@@ -11,7 +11,6 @@ const client=new Discord.Client();
 const prefix=process.env.PREFIX;
 client.commands=new Discord.Collection();
 const commandFolders=fs.readdirSync('./commands');
-//const commandFiles=fs.readdirSync("./Bot/commands").filter(file=>file.endsWith(".js"));
 for(const folder of commandFolders){
     const commandFiles=fs.readdirSync(`./commands/${folder}`).filter(file=>file.endsWith('.js'));
     for(const file of commandFiles){
