@@ -8,6 +8,7 @@ const fs=require("fs");
 const Discord=require('discord.js');
 require('dotenv').config();
 const client=new Discord.Client();
+client.lib=require('./library')
 const prefix=process.env.PREFIX;
 client.commands=new Discord.Collection();
 const commandFolders=fs.readdirSync('./commands');
@@ -59,7 +60,7 @@ client.on("message",message=>{
     timestamps.set(message.author.id,now);
     setTimeout(()=>timestamps.delete(message.author.id),cooldownAmount);
     try{
-        command.execute(message,args);
+        command.execute(message,args,client);
     } catch(error){
         console.error(error);
         message.reply(InvalidCommand);
