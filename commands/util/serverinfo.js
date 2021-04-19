@@ -1,7 +1,6 @@
 
 const Discord=require("discord.js")
 const { randColor } = require("../../helper")
-
 module.exports={
     name:"serverinfo",
     description:"about the bot",
@@ -9,7 +8,7 @@ module.exports={
     aliases:["server"],
     execute(message,args){
         const embed=new Discord.MessageEmbed()
-        .setColor(randColor)
+        .setColor(randColor())
         .setTitle(`${message.guild.name}'s stats`)
         .setImage(message.guild.iconURL())
         .addFields(
