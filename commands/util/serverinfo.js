@@ -1,6 +1,6 @@
 
 const Discord=require("discord.js")
-const { randColor } = require("../../helper")
+const { randColor } = require("../../library")
 module.exports={
     name:"serverinfo",
     description:"about the bot",
