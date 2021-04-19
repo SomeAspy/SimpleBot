@@ -20,12 +20,12 @@ module.exports={
         .setTitle(`${message.guild.name}'s stats`)
         .setImage(message.guild.iconURL())
         .addFields(
-            {name:"Server Owner:",value:message.guild.owner},
+            {name:"Server Owner:",value:`<@${message.guild.ownerID}>`},
             {name:"Creation Date:",value:message.guild.createdAt},
             {name:"Verification Level:",value:vLevel},
-            {name:"Content Filter:",value:message.guild.explicitContentFilter},
+            {name:"Server ID:",value:message.guild.id},
             {name:"Boosts:",value:message.guild.premiumSubscriptionCount},
-            {name:"members:",value:message.guild.memberCount}
+            {name:"Members out of max allowed:",value:`${message.guild.memberCount}/${message.guild.maximumMembers}`}
 
         )
         message.channel.send(embed)
