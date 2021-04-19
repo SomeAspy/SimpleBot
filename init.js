@@ -4,7 +4,7 @@ let NoDM="This command cannot be run in DMs!"
 let InvalidCommand="That command does not seem to exist!"
 let NoPerms="Your Perms don't allow you to do this"
 
-const fs=require("fs"); //import Filesystem library
+const fs=require("fs");
 const Discord=require('discord.js');
 require('dotenv').config();
 const client=new Discord.Client();
@@ -18,11 +18,8 @@ for(const folder of commandFolders){
         client.commands.set(command.name,command);
     }
 }
-
 client.cooldowns=new Discord.Collection();
-
 client.once("ready",()=>{console.log("Ready!");});
-
 client.on("message",message=>{
     if(!message.content.startsWith(prefix)||message.author.bot) return;
     const args=message.content.slice(prefix.length).trim().split(/ +/);
@@ -32,14 +29,12 @@ client.on("message",message=>{
     if(command.guildOnly&&message.channel.type==="dm"){
         return message.reply(NoDM)
     }
-
     if(command.permissions){
         const authorPerms=message.channel.permissionsFor(message.author);
         if(!authorPerms||!authorPerms.has(command.permissions)){
             return message.reply(NoPerms);
         }
     }
-
     if(command.args&&!args.length){
         let reply=NoArgs
         if(command.usage){
@@ -47,7 +42,6 @@ client.on("message",message=>{
         }
         return message.reply(reply)
     }
-
     const{cooldowns}=client;
     if(!cooldowns.has(command.name)){
         cooldowns.set(command.name, new Discord.Collection());
@@ -72,4 +66,3 @@ client.on("message",message=>{
     }
 })
 client.login(process.env.DISCORD_TOKEN);
-

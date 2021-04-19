@@ -26,6 +26,7 @@ module.exports={
             {name:"Server ID:",value:message.guild.id},
             {name:"Boosts:",value:message.guild.premiumSubscriptionCount},
             {name:"Members out of max allowed:",value:`${message.guild.memberCount}/${message.guild.maximumMembers}`}
+        .setTimestamp()
 
         )
         message.channel.send(embed)
