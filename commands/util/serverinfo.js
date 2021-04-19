@@ -9,7 +9,7 @@ module.exports={
     aliases:["server","serverinfo"],
     execute(message,args){
         const embed=new Discord.MessageEmbed()
-        .setColor(lib.RandColor)
+        .setColor(lib.RandColor())
         .setTitle(`${message.guild.name}'s stats`)
         .setImage(message.guild.iconURL())
         .addFields(
