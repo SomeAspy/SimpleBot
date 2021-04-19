@@ -1,4 +1,4 @@
 # DotEnv should be ignored for security/obvious reasons
 .env
 .gcloudignore
-.vscode
+.vscode*
