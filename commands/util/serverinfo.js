@@ -3,7 +3,7 @@ const Discord=require("discord.js")
 const lib=require("../../helper")
 
 module.exports={
-    name:"ServerInfo",
+    name:"serverinfo",
     description:"about the bot",
     cooldown:5,
     aliases:["server","serverinfo"],
