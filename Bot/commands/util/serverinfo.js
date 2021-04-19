@@ -1,6 +1,6 @@
 
 const Discord=require("discord.js")
-const lib=require("../helper")
+const lib=require("../../helper")
 
 module.exports={
     name:"ServerInfo",
