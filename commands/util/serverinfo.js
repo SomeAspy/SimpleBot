@@ -6,7 +6,7 @@ module.exports={
     name:"serverinfo",
     description:"about the bot",
     cooldown:5,
-    aliases:["server","serverinfo"],
+    aliases:["server"],
     execute(message,args){
         const embed=new Discord.MessageEmbed()
         .setColor(lib.RandColor())
