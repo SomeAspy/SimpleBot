@@ -13,6 +13,7 @@ module.exports={
         }
         const embed=new Discord.MessageEmbed()
         .setColor(lib.RandColor)
+        .setImage(user)
 
     }
 }
