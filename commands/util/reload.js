@@ -1,9 +1,11 @@
+const owner=process.env.OWNER;
 const fs=require('fs');
 module.exports={
     name:'reload',
     description:'reload a command',
     args:true,
     execute(message,args){
+        if(message.author.id===owner){
         const commandName=args[0].toLowerCase();
         const command=message.client.commands.get(commandName)||message.client.commands.find(cmd=>cmd.aliases&&cmd.aliases.includes(commandName));
         if(!command)return message.channel.send('There is no command matching that name to reload');
@@ -17,5 +19,6 @@ module.exports={
             console.error(error);
             message.channel.send(`There was an error reloading the command! ${error.message}`)
         }
+        }else{return(message.reply('only the owner of the bot can do this!\nIf you cloned the bot remember to put your ID in the owner variable of your .env file!'))}
     }
 }
