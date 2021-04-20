@@ -18,8 +18,9 @@ const commandFolders=readdirSync('./commands');
 for(const folder of commandFolders){
     const commandFiles=readdirSync(`./commands/${folder}`).filter(file=>file.endsWith('.js'));
     for(const file of commandFiles){
-        const command=import(`./commands/${folder}/${file}`);
+        let command = await import(`./commands/${folder}/${file}`)
         client.commands.set(command.name,command);
+        console.log(command)
     }
 }
 client.cooldowns=new Collection();
@@ -29,6 +30,7 @@ client.on("message",message=>{
     const args=message.content.slice(prefix.length).trim().split(/ +/);
     const commandName=args.shift().toLowerCase();
     const command=client.commands.get(commandName)||client.commands.find(cmd=>cmd.aliases&&cmd.aliases.includes(commandName));
+    message.reply('registered')
     if(!command) return;
     if(command.guildOnly&&message.channel.type==="dm"){
         return message.reply(NoDM)
@@ -60,11 +62,11 @@ client.on("message",message=>{
             return message.reply(`Please wait ${timeLeft.toFixed(1)} more seconds`)
         }
     }
+    console.log(command.execute(message,client))
     timestamps.set(message.author.id,now);
     setTimeout(()=>timestamps.delete(message.author.id),cooldownAmount);
     try{
         command.execute(message,args,client);
-        console.log('ok')
     } catch(error){
         console.error(error);
         message.reply(InvalidCommand);

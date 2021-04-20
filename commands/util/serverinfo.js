@@ -1,6 +1,6 @@
 
 import { MessageEmbed } from "discord.js";
-
+import {randColor} from '../../library.js'
 export const name = "serverinfo";
 export const description = "about the server";
 export const cooldown = 5;
@@ -25,8 +25,7 @@ export function execute(message) {
             { name: "Server ID:", value: message.guild.id },
             { name: "Boosts:", value: message.guild.premiumSubscriptionCount },
             { name: "Members out of max allowed:", value: `${message.guild.memberCount}/${message.guild.maximumMembers}` }
-                .setTimestamp()
-
-        );
+        )
+        .setTimestamp()
     message.channel.send(embed);
 }
