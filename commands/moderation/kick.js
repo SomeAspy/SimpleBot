@@ -7,9 +7,9 @@ module.exports={
     permissions:"KICK_MEMBERS",
     guildOnly:true,
     execute(message,args,client){
-        let user=client.lib.mentionToUser(client,args[0]);
+        let user=client.lib.mentionToUser(args[0],true,message);
         if(!user){return message.reply('Invalid User!')}
-        message.guild.members.kick(message.guild.member(user))
+        user.kick()
         let embed=new Discord.MessageEmbed()
         .setTitle(`Kicked ${user.username}.`)
         .setColor('#ff0000')

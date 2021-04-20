@@ -8,7 +8,7 @@ module.exports={
     execute(message,args,client){
         let user;
         if(args[0]){
-            user=client.lib.mentionToUser(client,args[0]);
+            user=client.lib.mentionToUser(args[0]);
             if(!user){return message.reply('Invalid User!')};
         }else{user=message.author}
         const embed=new Discord.MessageEmbed()

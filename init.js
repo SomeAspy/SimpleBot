@@ -9,6 +9,7 @@ const Discord=require('discord.js');
 require('dotenv').config();
 const client=new Discord.Client();
 client.lib=require('./library')
+module.exports=client
 const prefix=process.env.PREFIX;
 client.commands=new Discord.Collection();
 const commandFolders=fs.readdirSync('./commands');
