@@ -7,7 +7,7 @@ module.exports={
     permissions:"KICK_MEMBERS",
     guildOnly:true,
     execute(message,args,client){
-        let user=client.lib.mentionToUser(args[0],true,message);
+        let user=client.lib.mentionToUser(args[0],client);
         if(!user){return message.reply('Invalid User!')}
         message.mentions.members.first().kick()
         let embed=new Discord.MessageEmbed()
