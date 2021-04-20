@@ -2,3 +2,4 @@
 .env
 .gcloudignore
 .vscode*
+node_modules
