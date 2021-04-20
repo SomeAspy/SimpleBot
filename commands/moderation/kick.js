@@ -9,7 +9,7 @@ module.exports={
     execute(message,args,client){
         let user=client.lib.mentionToUser(client,args[0]);
         if(!user){return message.reply('Invalid User!')}
-        user.kick()
+        guild.members.kick(guild.member(user))
         let embed=new Discord.MessageEmbed()
         .setTitle(`Kicked ${user.username}.`)
         .setColor('#ff0000')
