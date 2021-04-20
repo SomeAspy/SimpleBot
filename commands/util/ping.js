@@ -1,7 +1,5 @@
 module.exports={
     name:"ping",
     description:"Response Time",
-    execute(message,args){
-        message.channel.send("PONG!");
-    },
-};
+    execute(message){message.channel.send(`PONG!\nRoundtrip latency: ${sent.createdTimestamp-message.createdTimestamp}ms`)}
+    }
