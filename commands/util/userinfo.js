@@ -1,9 +1,7 @@
-const Discord=require('discord.js')
-const lib=require("../../library")
+import Discord from 'discord.js'
+//import lib from "../../library"
 
-module.exports={
-    name:'memberinfo',
-    description:'Get info about a member',
-    cooldown:5,
-    aliases:['whois'],
-}
+export const name = 'memberinfo'
+export const description = 'Get info about a member'
+export const cooldown = 5
+export const aliases = ['whois']
