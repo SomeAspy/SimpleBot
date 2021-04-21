@@ -5,7 +5,7 @@
   "description": "I'm making this bot to be easy to add commands and be used by anybody.\r want to add the bot as seen in this repository?\r https://discord.com/api/oauth2/authorize?client_id=833398362183172117&permissions=8&scope=bot",
   "main": "init.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run": "node init.js"
   },
   "repository": {
     "url": "git+https://github.com/SomeAspy/SimpleBot.git"
