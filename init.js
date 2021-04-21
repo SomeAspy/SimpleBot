@@ -32,7 +32,7 @@ client.on("message",async message=>{
     const args=message.content.slice(prefix.length).trim().split(/ +/);
     const commandName=args.shift().toLowerCase();
     const command=client.commands.get(commandName)||client.commands.find(cmd=>cmd.aliases&&cmd.aliases.includes(commandName));
-    message.reply('Received!')
+    console.log('Received!\nThis is a diagnostic message to show that the message has been received')
     if(!command) return;
     if(command.guildOnly&&message.channel.type==="dm"){
         return message.reply(NoDM)
