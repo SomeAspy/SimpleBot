@@ -10,8 +10,6 @@ import { Client, Collection } from 'discord.js';
 import dotenv from 'dotenv'
 dotenv.config()
 const client=new Client();
-client.lib=import('./library.js')
-//export const client = client;
 const prefix=process.env.PREFIX;
 client.commands=new Collection();
 const commandFolders=readdirSync('./commands');
@@ -23,6 +21,9 @@ for(const folder of commandFolders){
         console.log(command)
     }
 }
+
+
+
 client.cooldowns=new Collection();
 client.once("ready",()=>{console.log("Ready!");});
 client.on("message",message=>{
@@ -30,7 +31,7 @@ client.on("message",message=>{
     const args=message.content.slice(prefix.length).trim().split(/ +/);
     const commandName=args.shift().toLowerCase();
     const command=client.commands.get(commandName)||client.commands.find(cmd=>cmd.aliases&&cmd.aliases.includes(commandName));
-    message.reply('registered')
+    message.reply('Received!')
     if(!command) return;
     if(command.guildOnly&&message.channel.type==="dm"){
         return message.reply(NoDM)
@@ -62,7 +63,6 @@ client.on("message",message=>{
             return message.reply(`Please wait ${timeLeft.toFixed(1)} more seconds`)
         }
     }
-    console.log(command.execute(message,client))
     timestamps.set(message.author.id,now);
     setTimeout(()=>timestamps.delete(message.author.id),cooldownAmount);
     try{
