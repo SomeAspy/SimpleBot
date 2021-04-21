@@ -20,6 +20,7 @@
     "@discordjs/opus": "^0.5.0",
     "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
+    "fake-tweet": "^0.1.16",
     "ffmpeg-static": "^4.3.0",
     "nekos.life": "^2.0.7",
     "ytdl-core": "^4.5.0"
