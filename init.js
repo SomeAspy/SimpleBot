@@ -10,6 +10,7 @@ import { Client, Collection } from 'discord.js';
 import dotenv from 'dotenv'
 dotenv.config()
 const client=new Client();
+//export {client}
 const prefix=process.env.PREFIX;
 client.commands=new Collection();
 const commandFolders=readdirSync('./commands');
@@ -26,7 +27,7 @@ for(const folder of commandFolders){
 
 client.cooldowns=new Collection();
 client.once("ready",()=>{console.log("Ready!");});
-client.on("message",message=>{
+client.on("message",async message=>{
     if(!message.content.startsWith(prefix)||message.author.bot) return;
     const args=message.content.slice(prefix.length).trim().split(/ +/);
     const commandName=args.shift().toLowerCase();
