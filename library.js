@@ -9,4 +9,7 @@ export function mentionToUser(mention,client) {
         return;
     return client.users.cache.get(matches[1]);
 }
+//args1 a r g s 2
 export function randomItem(list){return list[Math.floor(Math.random()*list.length)]}
+export function splitArgs(args){return args.match(/(?<= ).*/).join()}
+export function secondArg(args){return args.join(' ')}

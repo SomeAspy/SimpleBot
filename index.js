@@ -29,7 +29,7 @@ client.cooldowns=new Collection();
 client.once("ready",()=>{console.log("Ready!");});
 client.on("message",async message=>{
     if(!message.content.startsWith(prefix)||message.author.bot) return;
-    const args=message.content.slice(prefix.length).trim().split(/ +/);
+    const args=message.content.slice(prefix.length).trim().split(/ +/); //todo, new command handler
     const commandName=args.shift().toLowerCase();
     const command=client.commands.get(commandName)||client.commands.find(cmd=>cmd.aliases&&cmd.aliases.includes(commandName));
     console.log('Received!\nThis is a diagnostic message to show that the message has been received')

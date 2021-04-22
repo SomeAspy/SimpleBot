@@ -13,5 +13,5 @@ export function execute(message){
             {name:'CPU:',value:'1 Intel Xeon 5 Hyperthread @ 2.299GHz'},
             {name:'NodeJS:',value:'14.16.1'}
         )
-    message.channe.send(embed);
+    message.channel.send(embed);
 }
