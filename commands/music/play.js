@@ -2,7 +2,7 @@ import ytdl from 'ytdl-core';
 export const name='play';
 export const description='play something';
 export const args=true
-export async function execute(message,args,client){
+export async function execute(message,args){
     if(!message.member.voice.channel){
         return message.reply('You are not in a VC!');
     }

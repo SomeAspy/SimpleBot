@@ -1,6 +1,6 @@
-//import {client} from './init.js'
+import {client} from './client.js'
 export function randColor() { return Math.floor(Math.random() * 16777215).toString(16); }
-export function mentionToUser(mention,client) {
+export function mentionToUser(mention) {
     if(mention.isInteger){
         return mention;
     }

@@ -3,11 +3,11 @@ import { MessageEmbed } from "discord.js";
 import {mentionToUser, randColor} from '../../library.js'
 export const name='smug';
 export const description='smug at person!';
-export function execute(message,args,client){
+export function execute(message,args){
     let user;
     let text='You can smug at another person by mentioning them!'
     if(args[0]){
-        user=mentionToUser(args[0],client);
+        user=mentionToUser(args[0]);
         if(!user){return message.reply('Invalid user!')}else{
             text=`${message.author.username} smugs at ${user.username}!`
         }}

@@ -6,8 +6,8 @@ export const args = true;
 export const usage = "<user>";
 export const permissions = "BAN_MEMBERS";
 export const guildOnly = true;
-export function execute(message, args, client) {
-    let user = mentionToUser(args[0], client);
+export function execute(message, args) {
+    let user = mentionToUser(args[0]);
     if (!user) { return message.reply('Invalid User!'); }
     message.guild.members.ban(user)
     let embed = new MessageEmbed()

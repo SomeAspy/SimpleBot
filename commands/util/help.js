@@ -1,6 +1,6 @@
 
 
-const prefix=process.env.PREFIX
+import { prefix } from '../../cmdHandler.js'
 export const name = "help";
 export const description = "How to use the bot";
 export const aliases = ['commands'];
