@@ -1,4 +1,4 @@
-import {client} from './client.js'
+import {client} from './cmdHandler.js'
 export function randColor() { return Math.floor(Math.random() * 16777215).toString(16); }
 export function mentionToUser(mention) {
     if(mention.isInteger){

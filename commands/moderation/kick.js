@@ -8,7 +8,9 @@ export const permissions = "KICK_MEMBERS";
 export const guildOnly = true;
 export function execute(message, args) {
     let kickReason='(No reason given)'
+    console.log(args)
     let user = mentionToUser(args.shift());
+    console.log(args)
     if(!args.length===0){
         kickReason=secondArg(args)
     }
