@@ -9,22 +9,32 @@ const notOwner='This command can only be used by the set owner!'
 
 export const prefix='-'
 
+import {Client} from 'discord.js'
+import dotenv from 'dotenv'
+
+export const client=new Client();
+
 import { Collection } from 'discord.js';
-import {client} from './client.js'
 import { readdirSync } from "fs";
 
 client.commands=new Collection();
+
+dotenv.config()
+
 const commandFolders=readdirSync('./commands');
 for(const folder of commandFolders){
     const commandFiles=readdirSync(`./commands/${folder}`).filter(file=>file.endsWith('.js'));
     for(const file of commandFiles){
-        let command = await import(`./commands/${folder}/${file}`)
+        let command = import (`./commands/${folder}/${file}`).then(command=>{
         client.commands.set(command.name,command);
         console.log(command)
+        }
+        )
     }
 }
+client.once('ready',()=>console.log('Bot is ready to accept commands!'))
 
-client.cooldowns=new Collection()
+let cooldowns=new Collection()
 client.on('message',async message=>{
     if(!message.content.startsWith(prefix)||message.author.bot)return;
     const args=message.content.slice(prefix.length).trim().split(/ +/);
@@ -82,7 +92,7 @@ client.on('message',async message=>{
     
     //attempt to execute command
     try{
-        command.execute(message,args);
+        await command.execute(message,args);
     }
     catch(error){
         console.error(error);
@@ -90,3 +100,4 @@ client.on('message',async message=>{
     }
 
 })
+client.login(process.env.DISCORD_TOKEN)
