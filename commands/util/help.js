@@ -1,5 +1,3 @@
-
-
 const prefix=process.env.PREFIX
 export const name = "help";
 export const description = "How to use the bot";

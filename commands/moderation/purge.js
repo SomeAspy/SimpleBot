@@ -7,7 +7,7 @@ export const usage = "<number of messages to delete>";
 export const permissions = "MANAGE_MESSAGES";
 export const guildOnly = true;
 export const aliases=['prune']
-export function execute(message, args, client) {
+export function execute(message, args) {
     let count=args[0]
     if(isNaN(count)){return message.reply('enter a valid number!')}
     message.channel.bulkDelete(count).then(messages=>count=messages.size)

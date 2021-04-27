@@ -5,12 +5,8 @@ let InvalidCommand="That command does not seem to exist!"
 let NoPerms="Your Perms don't allow you to do this"
 
 import { readdirSync } from "fs";
-import { Client, Collection } from 'discord.js';
-//require('dotenv').config();
-import dotenv from 'dotenv'
-dotenv.config()
-const client=new Client();
-//export {client}
+import { client } from './client.js'
+import {Collection } from 'discord.js';
 const prefix=process.env.PREFIX;
 client.commands=new Collection();
 const commandFolders=readdirSync('./commands');
@@ -26,7 +22,7 @@ for(const folder of commandFolders){
 
 
 client.cooldowns=new Collection();
-client.once("ready",()=>{console.log("Ready!");});
+//client.once("ready",()=>{console.log("Ready!");});
 client.on("message",async message=>{
     if(!message.content.startsWith(prefix)||message.author.bot) return;
     const args=message.content.slice(prefix.length).trim().split(/ +/); //todo, new command handler
@@ -67,10 +63,10 @@ client.on("message",async message=>{
     timestamps.set(message.author.id,now);
     setTimeout(()=>timestamps.delete(message.author.id),cooldownAmount);
     try{
-        command.execute(message,args,client);
+        command.execute(message,args);
     } catch(error){
         console.error(error);
         message.reply(InvalidCommand);
     }
 })
-client.login(process.env.DISCORD_TOKEN);
+//client.login(process.env.DISCORD_TOKEN);
