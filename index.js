@@ -1,13 +1,15 @@
 //reply Setup
-let NoArgs="You must provide arguments!"
-let NoDM="This command cannot be run in DMs!"
-let InvalidCommand="That command does not seem to exist!"
-let NoPerms="Your Perms don't allow you to do this"
+const NoArgs="You must provide arguments!"
+const NoDM="This command cannot be run in DMs!"
+const InvalidCommand="That command does not seem to exist!"
+const NoPerms="Your Perms don't allow you to do this"
+
+export const prefix='-';
 
 import { readdirSync } from "fs";
 import { client } from './client.js'
 import {Collection } from 'discord.js';
-const prefix=process.env.PREFIX;
+
 client.commands=new Collection();
 const commandFolders=readdirSync('./commands');
 for(const folder of commandFolders){
@@ -22,7 +24,6 @@ for(const folder of commandFolders){
 
 
 client.cooldowns=new Collection();
-//client.once("ready",()=>{console.log("Ready!");});
 client.on("message",async message=>{
     if(!message.content.startsWith(prefix)||message.author.bot) return;
     const args=message.content.slice(prefix.length).trim().split(/ +/); //todo, new command handler
@@ -69,4 +70,3 @@ client.on("message",async message=>{
         message.reply(InvalidCommand);
     }
 })
-//client.login(process.env.DISCORD_TOKEN);
