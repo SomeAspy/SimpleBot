@@ -1,3 +1,5 @@
+const ownerID='516750892372852754'
+
 const noArgsMessage='You must provide arguments!';
 const notAllowedInDM='You cannot run this command in DMs!';
 const invalidCommand='This command does not seem to exist!';
@@ -17,9 +19,24 @@ export const client=new Client();
 import { Collection } from 'discord.js';
 import { readdirSync } from "fs";
 
+import {createConnection} from 'mysql'
+
+
 client.commands=new Collection();
 
 dotenv.config()
+
+const con=createConnection({
+    host:process.env.SQL_HOST,
+    user:process.env.SQL_USER,
+    password:process.env.SQL_PASSWORD
+})
+console.log(con)
+
+con.connect(function(err){
+    if(err)throw err;
+    console.log('SQL Connected!')
+})
 
 const commandFolders=readdirSync('./commands');
 for(const folder of commandFolders){
@@ -70,7 +87,6 @@ client.on('message',async message=>{
     if(command.NSFW&&!message.channel.nsfw){
         return message.reply(notNSFWChannel)
     }
-
 
     //command cooldown property/manager
     if(!cooldowns.has(command.name)){

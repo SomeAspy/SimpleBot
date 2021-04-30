@@ -1,6 +1,4 @@
 userinfo
 unmute
 unban
-purge
 mute
-ban
