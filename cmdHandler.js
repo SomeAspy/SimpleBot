@@ -5,7 +5,7 @@ const notAllowedInDM='You cannot run this command in DMs!';
 const invalidCommand='This command does not seem to exist!';
 const noUserPerms='You do not have the permissions required to do that!';
 const noBotPerms='I cannot do that due to my permissions!';
-const notNSFWChannel='This command can only be used in NSFW channels!'
+export const notNSFWChannel='This command can only be used in NSFW channels!'
 const notOwner='This command can only be used by the set owner!'
 
 
