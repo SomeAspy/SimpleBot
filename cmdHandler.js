@@ -23,10 +23,13 @@ client.commands=new Collection();
 
 dotenv.config()
 
+//import * as mongodb from 'mongodb'
+
 import pkg from 'mongodb'
 const {MongoClient}=pkg
-export const mongo=new pkg(process.env.MONGO_URL);
-await mongo.connect
+
+export const mongoClient= new MongoClient.connect(process.env.MONGO_URL,{useUnifiedTopology:true});
+await mongoClient.connect
 console.log('Connected to Mongo!')
 
 const commandFolders=readdirSync('./commands');
