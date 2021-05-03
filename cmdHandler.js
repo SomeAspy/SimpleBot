@@ -5,7 +5,7 @@ const notAllowedInDM='You cannot run this command in DMs!';
 const invalidCommand='This command does not seem to exist!';
 const noUserPerms='You do not have the permissions required to do that!';
 const noBotPerms='I cannot do that due to my permissions!';
-export const notNSFWChannel='This command can only be used in NSFW channels!'
+const notNSFWChannel='This command can only be used in NSFW channels!'
 const notOwner='This command can only be used by the set owner!'
 
 
@@ -19,24 +19,15 @@ export const client=new Client();
 import { Collection } from 'discord.js';
 import { readdirSync } from "fs";
 
-import {createConnection} from 'mysql'
-
-
 client.commands=new Collection();
 
 dotenv.config()
 
-const con=createConnection({
-    host:process.env.SQL_HOST,
-    user:process.env.SQL_USER,
-    password:process.env.SQL_PASSWORD
-})
-console.log(con)
-
-con.connect(function(err){
-    if(err)throw err;
-    console.log('SQL Connected!')
-})
+import pkg from 'mongodb'
+const {MongoClient}=pkg
+export const mongo=new pkg(process.env.MONGO_URL);
+await mongo.connect
+console.log('Connected to Mongo!')
 
 const commandFolders=readdirSync('./commands');
 for(const folder of commandFolders){
@@ -44,7 +35,7 @@ for(const folder of commandFolders){
     for(const file of commandFiles){
         let command = import (`./commands/${folder}/${file}`).then(command=>{
         client.commands.set(command.name,command);
-        console.log(command)
+        //console.log(command)
         }
         )
     }
@@ -55,6 +46,7 @@ let cooldowns=new Collection()
 client.on('message',async message=>{
     if(!message.content.startsWith(prefix)||message.author.bot)return;
     const args=message.content.slice(prefix.length).trim().split(/ +/);
+    console.log(args)
     const commandName=args.shift().toLowerCase();
     const command=client.commands.get(commandName)||client.commands.find(cmd=>cmd.aliases&&cmd.aliases.includes(commandName));
     console.log('Command received! Attempting to execute...');
@@ -69,7 +61,7 @@ client.on('message',async message=>{
     if(command.permissions){
         const authorPerms=message.channel.permissionsFor(message.author);
         if(!authorPerms||!authorPerms.has(command.permissions)){
-            return messsage.reply(noUserPerms);
+            return message.reply(noUserPerms);
         }
     }
 

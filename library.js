@@ -12,3 +12,7 @@ export function mentionToUser(mention) {
 export function randomItem(list){return list[Math.floor(Math.random()*list.length)]}
 export function splitArgs(args){return args.match(/(?<= ).*/).join()}
 export function secondArg(args){return args.join(' ')}
+
+export function combineArgs(args){
+    return args.split(' ').join(' ')
+}

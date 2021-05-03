@@ -1,23 +1,17 @@
 import { MessageEmbed } from "discord.js";
-import { randColor } from "../../library.js";
+import { randColor, combineArgs } from "../../library.js";
 
 export const name='mock';
 export const description='mock something';
 export const args=true
 export function execute(message,args){
+    let pos
     let output;
-    args=args.split('')
-    args.foreach(item=>{
-        if(args.length%2){
-            try{item=item.toUpperCase()}
-            finally{output+=item}
-        }
-        else{
-            try{item=item.toLowerCase()}
-            finally{output+=item}
-        }  
-    })
-    const embed=new MessageEmbed
+    console.log(args)
+    args=args.join(' ').toUpperCase().split('')
+    console.log(args)
+    
+    const embed=new MessageEmbed()
         .setTitle(output)
         .setTimestamp()
         .setColor(randColor())
