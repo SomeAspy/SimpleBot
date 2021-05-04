@@ -36,7 +36,7 @@ export const mongoClient= await new MongoClient.connect(process.env.MONGO_URL,{u
         throw('failed to connect to Mongo (Timed out)')
     }
 })
-await mongoClient.connect
+await mongoClient
 console.log('Connected to Mongo!')
 
 const commandFolders=readdirSync('./commands');
@@ -50,7 +50,7 @@ for(const folder of commandFolders){
         )
     }
 }
-console.log('Registered commands!\n Waiting on discord API...')
+console.log('Registered commands!\nWaiting on discord API...')
 
 
 client.once('ready',()=>console.log('Bot is ready to accept commands!'))
