@@ -1,4 +1,6 @@
-const ownerID='516750892372852754'
+console.log('Attempting to start...')
+const ownerID=516750892372852754
+console.log(`Owner is ${ownerID}.`)
 
 const noArgsMessage='You must provide arguments!';
 const notAllowedInDM='You cannot run this command in DMs!';
@@ -10,6 +12,7 @@ const notOwner='This command can only be used by the set owner!'
 
 
 export const prefix='-'
+console.log(`using prefix "${prefix}"`)
 
 import {Client} from 'discord.js'
 import dotenv from 'dotenv'
@@ -18,17 +21,21 @@ export const client=new Client();
 
 import { Collection } from 'discord.js';
 import { readdirSync } from "fs";
-
 client.commands=new Collection();
 
 dotenv.config()
+console.log('.env file found!')
 
 //import * as mongodb from 'mongodb'
 
 import pkg from 'mongodb'
 const {MongoClient}=pkg
-
-export const mongoClient= new MongoClient.connect(process.env.MONGO_URL,{useUnifiedTopology:true});
+console.log('Attempting to connect to Mongo...')
+export const mongoClient= await new MongoClient.connect(process.env.MONGO_URL,{useUnifiedTopology:true}).catch(error=>{
+    if(error.code==='ETIMEOUT'){
+        throw('failed to connect to Mongo (Timed out)')
+    }
+})
 await mongoClient.connect
 console.log('Connected to Mongo!')
 
@@ -43,6 +50,9 @@ for(const folder of commandFolders){
         )
     }
 }
+console.log('Registered commands!\n Waiting on discord API...')
+
+
 client.once('ready',()=>console.log('Bot is ready to accept commands!'))
 
 let cooldowns=new Collection()
@@ -112,3 +122,4 @@ client.on('message',async message=>{
 
 })
 client.login(process.env.DISCORD_TOKEN)
+console.log('Client Logged in!')
