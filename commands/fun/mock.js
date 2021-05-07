@@ -1,5 +1,5 @@
 import { MessageEmbed } from "discord.js";
-import { randColor, combineArgs } from "../../library.js";
+import { randColor, combineArgs } from "../../libraries/library.js";
 
 export const name='mock';
 export const description='mock something';

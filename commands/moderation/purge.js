@@ -1,10 +1,11 @@
 import { MessageEmbed } from 'discord.js';
-import { randColor } from '../../library.js';
+import { randColor } from '../../libraries/library.js';
 export const name = "purge";
 export const description = "Purge x number of messages, (age is limited to 2 weeks duw to api)";
 export const args = true;
 export const usage = "<number of messages to delete>";
 export const permissions = "MANAGE_MESSAGES";
+export const botPerms=['MANAGE_MESSAGES']
 export const guildOnly = true;
 export const aliases=['prune']
 export function execute(message, args) {

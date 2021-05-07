@@ -1,8 +1,8 @@
-import {neko} from '../../nekolib.js'
+import {neko} from '../../APIs/nekolib.js'
 import { MessageEmbed } from "discord.js";
-import {mentionToUser, randColor} from '../../library.js'
-export const name='pussy';
-export const description='Get a pussy pic!';
+import {mentionToUser, randColor} from '../../libraries/library.js'
+export const name='erokitsune';
+export const description='Get a erokitsune pic!';
 export const NSFW=true;
 export function execute(message,args){
     let user;
@@ -10,10 +10,10 @@ export function execute(message,args){
     if(args[0]){
         user=mentionToUser(args[0]);
         if(!user){return message.reply('Invalid user!')}else{
-            text=`${message.author.username} pussys ${user.username}!`
+            text=`${message.author.username} erokitsunes ${user.username}!`
         }}
     async function returnNeko(){
-        const nekoOut=await neko.nsfw.pussy()
+        const nekoOut=await neko.nsfw.eroKitsune()
         const embed=new MessageEmbed()
             .setTitle(text)
             .setColor(randColor())

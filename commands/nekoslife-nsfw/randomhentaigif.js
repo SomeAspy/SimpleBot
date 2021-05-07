@@ -1,6 +1,6 @@
-import {neko} from '../../nekolib.js'
+import {neko} from '../../APIs/nekolib.js'
 import { MessageEmbed } from "discord.js";
-import {mentionToUser, randColor} from '../../library.js'
+import {mentionToUser, randColor} from '../../libraries/library.js'
 export const name='randomhentaigif';
 export const description='Get a random Hentai GIF!';
 export const NSFW=true;

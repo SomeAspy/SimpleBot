@@ -1,5 +1,7 @@
+'use strict';
+
 console.log('Attempting to start...')
-const ownerID=516750892372852754
+export const ownerID='516750892372852754'
 console.log(`Owner is ${ownerID}.`)
 
 const noArgsMessage='You must provide arguments!';
@@ -19,14 +21,12 @@ import dotenv from 'dotenv'
 
 export const client=new Client();
 
-import { Collection } from 'discord.js';
+import { Collection, Permissions } from 'discord.js';
 import { readdirSync } from "fs";
 client.commands=new Collection();
 
 dotenv.config()
 console.log('.env file found!')
-
-//import * as mongodb from 'mongodb'
 
 import pkg from 'mongodb'
 const {MongoClient}=pkg
@@ -46,14 +46,13 @@ for(const folder of commandFolders){
         let command = import (`./commands/${folder}/${file}`).then(command=>{
         client.commands.set(command.name,command);
         //console.log(command)
-        }
-        )
+        })
     }
 }
 console.log('Registered commands!\nWaiting on discord API...')
 
 
-client.once('ready',()=>console.log('Bot is ready to accept commands!'))
+client.once('ready',()=>console.log(`Connected to Discord!\nGuild Count: ${client.guilds.cache.size}\nMy ID: ${client.user.id}`))
 
 let cooldowns=new Collection()
 client.on('message',async message=>{
@@ -65,6 +64,11 @@ client.on('message',async message=>{
     console.log('Command received! Attempting to execute...');
     if(!command) return;
     
+    //Owner only property
+    if(command.ownerOnly===true&&message.author.id!=ownerID){
+        return message.channel.send('This command can only be used by the owner of the bot!')
+    }
+
     //command guildonly property
     if(command.guildOnly&&message.channel.type==='dm'){
         return message.reply(notAllowedInDM);
@@ -90,7 +94,16 @@ client.on('message',async message=>{
 
     //command NSFW property
     if(command.NSFW&&!message.channel.nsfw){
-        return message.reply(notNSFWChannel)
+        return message.channel.send(notNSFWChannel)
+    }
+
+    //command Bot perm property
+    const setPerms=new Permissions(message.channel.permissionsFor(message.guild.me))
+    console.log(setPerms)
+    if(!setPerms.has('SEND_MESSAGES')){
+        console.log('failed to send error message, missing message send permissions!')
+    }else if(!setPerms.has(command.botPerms)){
+        return message.channel.send('I do not have the permissions necessary to execute that command!')
     }
 
     //command cooldown property/manager

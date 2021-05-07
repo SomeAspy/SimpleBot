@@ -1,10 +1,11 @@
-import{mentionToUser}from'../../library.js'
-import{MessageEmbed}from'discord.js';
+import{mentionToUser}from '../../libraries/library.js'
+import{MessageEmbed}from 'discord.js';
 export const name = "kick";
 export const description = "Kick a member";
 export const args = true;
 export const usage = "<user>";
 export const permissions = "KICK_MEMBERS";
+export const botPerms=['KICK_MEMBERS']
 export const guildOnly = true;
 export async function execute(message, args) {
     let kickReason;

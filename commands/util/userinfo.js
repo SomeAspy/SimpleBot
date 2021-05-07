@@ -1,5 +1,5 @@
 import { MessageEmbed } from "discord.js"
-import { mentionToUser, randColor } from "../../library.js"
+import { mentionToUser, randColor } from '../../libraries/library.js'
 export const name = 'memberinfo'
 export const description = 'Get info about a member'
 export const cooldown = 5

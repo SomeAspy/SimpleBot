@@ -1,6 +1,6 @@
-import {neko} from '../../nekolib.js'
+import {neko} from '../../APIs/nekolib.js'
 import { MessageEmbed } from "discord.js";
-import {mentionToUser, randColor} from '../../library.js'
+import {mentionToUser, randColor} from '../../libraries/library.js'
 export const name='why';
 export const description='why a person!';
 export function execute(message,args){

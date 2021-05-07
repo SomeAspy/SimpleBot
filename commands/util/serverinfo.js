@@ -1,6 +1,6 @@
 
 import { MessageEmbed } from "discord.js";
-import {randColor} from '../../library.js'
+import {randColor} from '../../libraries/library.js'
 export const name = "serverinfo";
 export const description = "about the server";
 export const cooldown = 5;

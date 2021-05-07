@@ -1,6 +1,6 @@
-import {neko} from '../../nekolib.js'
+import {neko} from '../../APIs/nekolib.js'
 import { MessageEmbed } from "discord.js";
-import {mentionToUser, randColor} from '../../library.js'
+import {mentionToUser, randColor} from '../../libraries/library.js'
 export const name='tits';
 export const description='Get a tits pic!';
 export const NSFW=true;

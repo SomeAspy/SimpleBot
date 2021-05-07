@@ -1,6 +1,6 @@
-import {nounList} from '../../nouns.js';
+import {nounList} from '../../libraries/nouns.js';
 import {MessageEmbed} from 'discord.js';
-import { randColor, randomItem, mentionToUser } from '../../library.js';
+import { randColor, randomItem, mentionToUser } from '../../libraries/library.js';
 export const name='throw';
 export const description='throw something at someone';
 export const aliases=['launch'];

@@ -1,6 +1,6 @@
-import {neko} from '../../nekolib.js'
+import {neko} from '../../APIs/nekolib.js'
 import { MessageEmbed } from "discord.js";
-import {mentionToUser, randColor} from '../../library.js'
+import {mentionToUser, randColor} from '../../libraries/library.js'
 export const name='tickle';
 export const description='tickle a person!';
 export function execute(message,args){
@@ -9,7 +9,7 @@ export function execute(message,args){
     if(args[0]){
         user=mentionToUser(args[0]);
         if(!user){return message.reply('Invalid user!')}else{
-            text=`${message.author.username} tickels ${user.username}!`
+            text=`${message.author.username} tickles ${user.username}!`
         }}
     async function returnNeko(){
         const nekoOut=await neko.sfw.tickle()

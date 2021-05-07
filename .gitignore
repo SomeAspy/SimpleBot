@@ -1,7 +1,5 @@
 # DotEnv should be ignored for security/obvious reasons
 .env
-.gcloudignore
 .vscode*
 node_modules
 tempCodeRunnerFile.js
-BotPFP.jpg

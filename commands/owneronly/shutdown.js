@@ -1,12 +1,6 @@
-import { client } from "../../cmdHandler.js";
-
-const owner=process.env.OWNER;
+import { client } from "../../index.js";
 export const name = 'shutdown';
-export function execute(message) {
-    if (message.author.id === owner) {
-        message.reply('Stopping!');
-        client.destroy()
-    } else {
-        return (message.reply('only the owner of the bot can do this!\nIf you cloned the bot remember to put your ID in the owner variable of your .env file!'));
-    }
+export let ownerOnly=true
+export async function execute(message){
+    await message.channel.send('Goodbye.').then(client.destroy())
 }
