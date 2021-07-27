@@ -1,6 +1,6 @@
 
 
-import { prefix } from '../../index.js'
+import { prefix } from '../../config.js'
 export const name = "help";
 export const description = "How to use the bot";
 export const aliases = ['commands'];

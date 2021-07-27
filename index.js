@@ -1,33 +1,23 @@
-'use strict';
+'use strict'
+
+import {ownerID,noArgsMessage,notAllowedInDM,invalidCommand,noUserPerms,noBotPerms,notNSFWChannel,notOwner,prefix} from './config.js'
 
 console.log('Attempting to start...')
-export const ownerID='516750892372852754'
 console.log(`Owner is ${ownerID}.`)
-
-const noArgsMessage='You must provide arguments!';
-const notAllowedInDM='You cannot run this command in DMs!';
-const invalidCommand='This command does not seem to exist!';
-const noUserPerms='You do not have the permissions required to do that!';
-const noBotPerms='I cannot do that due to my permissions!';
-const notNSFWChannel='This command can only be used in NSFW channels!'
-const notOwner='This command can only be used by the set owner!'
-
-
-export const prefix='-'
 console.log(`using prefix "${prefix}"`)
 
-import {Client} from 'discord.js'
+import {Client,Collection,Permissions} from 'discord.js'
 import dotenv from 'dotenv'
+import { readdirSync } from "fs";
 
 export const client=new Client();
 
-import { Collection, Permissions } from 'discord.js';
-import { readdirSync } from "fs";
 client.commands=new Collection();
 
 dotenv.config()
 console.log('.env file found!')
 
+/*
 import pkg from 'mongodb'
 const {MongoClient}=pkg
 console.log('Attempting to connect to Mongo...')
@@ -38,6 +28,7 @@ export const mongoClient= await new MongoClient.connect(process.env.MONGO_URL,{u
 })
 await mongoClient
 console.log('Connected to Mongo!')
+*/
 
 const commandFolders=readdirSync('./commands');
 for(const folder of commandFolders){
@@ -50,7 +41,6 @@ for(const folder of commandFolders){
     }
 }
 console.log('Registered commands!\nWaiting on discord API...')
-
 
 client.once('ready',()=>console.log(`Connected to Discord!\nGuild Count: ${client.guilds.cache.size}\nMy ID: ${client.user.id}`))
 
