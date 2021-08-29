@@ -13,7 +13,7 @@ export function execute(message, args) {
     const embed = new MessageEmbed()
         .setTitle(`${user.username}'s avatar:`)
         .setColor(randColor())
-        .setImage(user.displayAvatarURL({ dynamic: true }))
+        .setImage(user.displayAvatarURL({ dynamic: true, size:4096 }))
         .setTimestamp();
 
     message.channel.send(embed);
