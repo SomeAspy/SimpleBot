@@ -1,5 +1,0 @@
-# DotEnv should be ignored for security/obvious reasons
-.env
-.vscode*
-node_modules
-tempCodeRunnerFile.js
