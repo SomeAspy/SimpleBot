@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/SomeAspy/SimpleBot#readme",
   "dependencies": {
-    "@discordjs/opus": "^0.5.0",
+    "@discordjs/opus": "^0.8.0",
     "canvas": "^2.7.0",
     "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
